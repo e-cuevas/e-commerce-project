@@ -1,0 +1,91 @@
+.login {
+  margin-top: 4em;
+}
+.login h1 {
+  font-size: 2rem;
+  font-family: "Paytone One", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  padding-top: 1rem;
+}
+.form h2 {
+  font-size: 1rem;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(26, 82, 79, 0.8);
+  width: 40vw;
+  height: 80vh;
+  margin-top: 4em;
+  margin-bottom: 3em;
+  padding: 2em;
+  margin: 0 auto;
+  border-radius: 4px;
+  font-size: 1.2rem;
+}
+
+span.icon {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 0.5em auto;
+}
+span.icon svg {
+  font-size: 3rem; /* set a fixed width */
+  width: 1em; /* Maintain aspect ratio */
+  height: 1em;
+}
+span.icon svg {
+  transition: transform 0.2s;
+}
+span.icon svg:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+hr {
+  width: 100%;
+  border: 2px solid rgba(17, 55, 53, 0.8);
+  margin: 1.5em 0;
+}
+label{
+  width: 100%;
+}
+input[type="password"],
+input[type="email"],
+textarea {
+  width: 100%;
+}
+
+input {
+  padding: 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input:focus {
+  text-align: left;
+}
+input::placeholder {
+  text-align: center;
+  font-size: 1.3rem;
+}
+.login-button {
+  background-color: #0a4231;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* Add initial transition for smooth hover-out */
+  transition: all 0.4s ease;
+}
+
+.login-button[type="submit"]:hover {
+  background-color: #0c4c39;
+  border: 1.5px solid white;
+}
+.create-acc {
+  color: rgb(255, 255, 255);
+}

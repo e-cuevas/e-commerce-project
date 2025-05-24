@@ -1,0 +1,126 @@
+.wine-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  transition: border-color 0.25s;
+  background-color: rgb(2, 2, 143);
+  transition: transform 0.2s;
+  height: 100%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.wine-card:hover {
+  transform: translateY(-5px);
+  border-color: #810101;
+}
+
+.wine-poster {
+  position: relative;
+  aspect-ratio: 2/3;
+  width: 100%;
+  overflow: hidden; /* Ensures images don't overflow the container */
+}
+
+.wine-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wine-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(155, 13, 32, 0.1),
+    rgba(155, 43, 15, 0.8)
+  );
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.wine-overlay-cart {
+  position: relative;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.wine-card:hover .wine-overlay {
+  opacity: 1;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.favorite-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.favorite-btn.active {
+  color: #ff4757;
+}
+.addToCart-btn {
+  background-color: rgba(184, 7, 7, 0.8);
+}
+
+.wine-info {
+  padding: 0.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.wine-info h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.wine-info p {
+  color: white;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .wine-card {
+    font-size: 0.9rem;
+  }
+
+  .wine-info {
+    padding: 0.75rem;
+  }
+
+  .favorite-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+}

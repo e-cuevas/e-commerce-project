@@ -1,0 +1,98 @@
+.signup {
+  margin-top: 4em;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(26, 82, 79, 0.8);
+  width: 40vw;
+  height: auto;
+  margin-top: 4em;
+  margin-bottom: 3em;
+  padding: 2em;
+  /* margin: 0 auto; */
+  border-radius: 4px;
+  font-size: 1.2rem;
+}
+.back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-flex;
+  color: white;
+}
+.back span {
+  padding-right: 0.5rem;
+  font-size: 1.5rem;
+}
+.signup h1 {
+  font-size: 2rem;
+  padding-top: 1rem;
+  font-family: "Paytone One", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+label {
+  width: 100%;
+}
+input[type="password"],
+input[type="email"],
+input[type="text"],
+textarea {
+  width: 100%;
+}
+
+input {
+  padding: 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input:focus {
+  text-align: left;
+}
+input::placeholder {
+  text-align: center;
+  font-size: 1.3rem;
+}
+.register-button {
+  background-color: #0a4231;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* Add initial transition for smooth hover-out */
+  transition: all 0.4s ease;
+}
+
+.register-button[type="submit"]:hover {
+  background-color: #0c4c39;
+  border: 1.5px solid white;
+}
+.create-acc {
+  color: rgb(255, 255, 255);
+}
+
+@media (max-width: 1260px) {
+  .form {
+    width: 60vw;
+  }
+}
+@media (max-width: 700px) {
+  .form {
+    width: 80vw;
+  }
+}
+@media (max-width: 500px) {
+  .signup {
+    margin-top: 2em;
+  }
+  .form {
+    width: 90vw;
+  }
+}
