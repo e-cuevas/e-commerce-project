@@ -7,9 +7,32 @@ import {useWineContext} from "../context/FavoritesContext";
 
 function WineCard({wine}) {
   // Cart context
-  const {setCartCount} = useContext(CartContext);
+  const {setCartCount, addWinesToCart} = useContext(CartContext);
+
   const handleaddToCart = () => {
     setCartCount((prev) => prev + 1);
+
+    //favoriteContext for the onFavoriteClick()
+    const {isWineFavorite, addWinesToFavorites, removeWineFromFavorites} =
+      useWineContext();
+    const favorite = isWineFavorite(wine.id);
+
+    const handleaddToCart = () => {
+      setCartCount((prev) => prev + 1);
+      addWinesToCart(wine); // Add wine to cart
+    };
+
+    const onFavoriteClick = (e) => {
+      e.preventDefault();
+      console.log("Clicked favorite for wine id:", wine.id);
+      if (favorite) {
+        removeWineFromFavorites(wine.id);
+        console.log("Removed from favorites");
+      } else {
+        addWinesToFavorites(wine);
+        console.log("Added to favorites");
+      }
+    }
   };
 
   //favoriteContext for the onFavoriteClick()

@@ -1,5 +1,6 @@
 import {useContext, useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
+import {CartModal} from "./CartModal";
 import "../css/Navbar.css";
 import {IoIosHome} from "react-icons/io";
 import {FaHeart} from "react-icons/fa";
@@ -10,12 +11,20 @@ import {FaBook} from "react-icons/fa";
 import {jwtDecode} from "jwt-decode"; // Import jwt-decode
 
 function NavBar() {
-  const {cartCount} = useContext(CartContext);
+  const {cartCount, cartItems, removeFromCart} = useContext(CartContext);
 
   //login status conditional render in navbar using "token"
   const [isAdmin, setIsAdmin] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  const {wineToCart, removeWineFromCart} = useContext(CartContext); // Add this to your CartContext
+
+  const handleCartClick = (e) => {
+    e.preventDefault();
+    setIsCartModalOpen(true);
+  };
 
   // Decode token and get user info if available.
   useEffect(() => {
@@ -27,10 +36,6 @@ function NavBar() {
         setUser(decoded);
         // Set admin status based on role
         setIsAdmin(decoded.role === "admin");
-        // Check if user is admin and redirect
-        // if ("admin") {
-        //   window.location.href = "https://estebancuevas.com.au/wine-crud-app/";
-        // }
       } catch (error) {
         setUser(null);
         setIsAdmin(false);
@@ -74,7 +79,10 @@ function NavBar() {
               <FaBook />
               Inventory
             </Link>
-            <button onClick={handleLogout} className="nav-link " id="logout-button">
+            <button
+              onClick={handleLogout}
+              className="nav-link "
+              id="logout-button">
               Logout
             </button>
           </div>
@@ -113,10 +121,16 @@ function NavBar() {
             Favorites
           </Link>
 
-          <Link to="/cart" className="nav-link">
+          <Link to="/cart" className="nav-link" onClick={handleCartClick}>
             <FaShoppingCart />
             {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
           </Link>
+          <CartModal
+            isOpen={isCartModalOpen}
+            onClose={() => setIsCartModalOpen(false)}
+            cartItems={cartItems}
+            removeFromCart={removeFromCart}
+          />
         </div>
       </div>
     </nav>
