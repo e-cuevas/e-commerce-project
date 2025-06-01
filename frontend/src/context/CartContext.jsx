@@ -5,34 +5,39 @@ export const useCartContext = () => useContext(CartContext);
 
 export function CartProvider({children}) {
   const [cartItems, setCartItems] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
+ //const [cartCount, setCartCount] = useState(0);
 
   const addWinesToCart = (wine) => {
-    setCartItems((prev) => [...prev, wine]);
-    setCartCount((prev) => prev + 1);
+    setCartItems((prev) => {
+      const existing = prev.find((item) => item.id === wine.id);
+      if (existing) {
+        return prev.map((item) =>
+          item.id === wine.id ? {...item, quantity: item.quantity + 1} : item
+        );
+      }
+      return [...prev, {...wine, quantity: 1}];
+    });
   };
 
-   const removeFromCart = (wineId) => {
-     setCartItems((prev) => {
-       const index = prev.findIndex((item) => item.id === wineId)
-       if (index === -1) return prev;
-       const newCart = [...prev];
-       newCart.splice(index, 1);// Remove one occurrence
-       return newCart
-   });
-   setCartCount((prev) => prev - 1);
+  const removeFromCart = (wineId) => {
+    setCartItems((prev) => {
+      const existing = prev.find((item) => item.id === wineId);
+      if (existing?.quantity > 1) {
+        return prev.map((item) =>
+          item.id === wineId ? {...item, quantity: item.quantity - 1} : item
+        );
+      }
+      return prev.filter((item) => item.id !== wineId);
+    });
   };
-  // const removeFromCart = (wineId) => {
-  //   setCartItems((prev) => prev.filter((item) => item.id !== wineId));
-  //   setCartCount((prev) => prev - 1);
-  // };
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <CartContext.Provider
       value={{
         cartItems,
         cartCount,
-        setCartCount,
+       // setCartCount,
         addWinesToCart,
         removeFromCart,
       }}>
@@ -40,4 +45,3 @@ export function CartProvider({children}) {
     </CartContext.Provider>
   );
 }
-

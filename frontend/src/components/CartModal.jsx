@@ -5,6 +5,11 @@ import "../css/CartModal.css";
 export function CartModal({isOpen, onClose, cartItems, removeFromCart}) {
   if (!isOpen) return null;
 
+  const totalPrice = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -25,6 +30,7 @@ export function CartModal({isOpen, onClose, cartItems, removeFromCart}) {
                   <div className="item-details">
                     <h3>{item.producer}</h3>
                     <p>${item.price}</p>
+                    {item.name} (Quantity: {item.quantity})
                   </div>
                   <button
                     onClick={() => removeFromCart(item.id)}
@@ -37,6 +43,9 @@ export function CartModal({isOpen, onClose, cartItems, removeFromCart}) {
           )}
         </div>
         <div className="modal-footer">
+          <div className="cart-total">
+            <strong>Total:</strong> ${totalPrice.toFixed(2)}
+          </div>
           <button onClick={onClose}>Close</button>
           <Link to="/cart" className="checkout-button">
             Checkout
