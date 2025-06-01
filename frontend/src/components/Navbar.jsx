@@ -11,20 +11,21 @@ import {FaBook} from "react-icons/fa";
 import {jwtDecode} from "jwt-decode"; // Import jwt-decode
 
 function NavBar() {
-  const {cartCount, cartItems, removeFromCart} = useContext(CartContext);
-
-  //login status conditional render in navbar using "token"
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
+  
+  const {cartItems, removeFromCart} = useContext(CartContext);
+  const cartCount = cartItems.length;
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
-  const {wineToCart, removeWineFromCart} = useContext(CartContext); // Add this to your CartContext
 
   const handleCartClick = (e) => {
     e.preventDefault();
     setIsCartModalOpen(true);
   };
+
+  //Login status conditional render in navbar using "token"
+
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   // Decode token and get user info if available.
   useEffect(() => {

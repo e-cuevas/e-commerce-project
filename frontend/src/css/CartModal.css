@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,12 +13,24 @@
 
 .modal-content {
   background: white;
+  color: #030ee9;
   padding: 20px;
   border-radius: 8px;
   max-width: 500px;
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
+}
+.modal-header{
+  position:relative;
+}
+.close-button{
+  position: absolute;
+  top: -10px;
+  right:-10px;
+   padding:  0.1rem 0.4rem;
+   font-size: 1.5rem;
+
 }
 
 .cart-items {
@@ -40,3 +52,4 @@
   height: 50px;
   object-fit: cover;
 }
+
