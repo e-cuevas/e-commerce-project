@@ -58,7 +58,7 @@
   padding: 1rem;
   width: 100%;
   box-sizing: border-box;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
@@ -68,7 +68,7 @@
   }
   .cellar-grid {
     display: grid;
-    grid-template-columns:150px (1fr);
+    grid-template-columns: 150px (1fr);
     gap: 1.5rem;
     padding: 1rem;
     width: 100%;
