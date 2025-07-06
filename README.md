@@ -26,10 +26,11 @@ This project is a **Wine E-Commerce Website** designed to provide users with a s
 
 ## Project Structure
 
+```
 /frontend # React app (UI, cart, search, etc.)
 /backend # Node.js + Express API (routes, auth, DB connection)
 README.md # Project overview and instructions
-
+```
 ## How It Works
 
 - The **frontend** (React) fetches wine data and handles user interactions.
