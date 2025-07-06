@@ -14,11 +14,14 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/api/register", {
-        name,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://e-commerce-project-r7hg.onrender.com/api/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
       alert(response.data.message);
       // Redirect to the Cellar page
       navigate("/login");

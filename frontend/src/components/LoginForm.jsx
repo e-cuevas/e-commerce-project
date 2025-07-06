@@ -14,10 +14,13 @@ function LoginForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://e-commerce-project-r7hg.onrender.com/api/login",
+        {
+          email,
+          password,
+        }
+      );
       const {token} = response.data;
       localStorage.setItem("token", token); // Save token in local storage
 
